@@ -10,11 +10,21 @@
 </head>
 <body>
 <div id="header">
-    <a href="/" class="logo">Oziq Ovqat Expert Web Site</a>
+    <div class="d-flex justify-content-start">
+        <a href="/" class="logo">Oziq Ovqat Expert Web Site</a>
+        {% if user.is_active %}
+            <a href="{% url "shop:my_order_list" %}" class="login btn  btn-primary ml-1">Buyurtmalar</a>
+            <a href="{% url "shop:my_product_list" %}" class="login btn  btn-primary ml-1">Mahsulotlarim</a>
+        {% endif %}
+
+    </div>
+
     {% if user.is_active %}
+
         <div>
             <a href="{% url "profile" %}" class="login btn  btn-primary">Mening hisobim</a>
             <a href="{% url "logout" %}" class="login btn  btn-primary ml-1">Chiqish</a>
+
         </div>
 
     {% else %}

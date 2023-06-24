@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="d-flex gap-2 justify-content-center w-100 flex-wrap">
+
+        {% for i in order_products %}
+
+            <div class="card" style="width: 18rem;">
+                <img class="card-img-top" src="{{ i.product.image.url }}" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">{{ i.product.name }}</h5>
+                    <p class="card-text">{{ i.product.description | slice:300 }}</p>
+                    <p class="card-text">Buyurtmachi ismi:{{ i.order.first_name }}</p>
+                    <p class="card-text" type="email">Buyurtmachi email: {{ i.order.email }}</p>
+                    <p class="card-text">Buyurtmachi adress: {{ i.order.address }}</p>
+                    <div>
+                        <a href="{% url "shop:my_order_accept" i.id %}" class="login btn  btn-primary">qabul qilish</a>
+                        <a href="{% url "shop:my_order_reject" i.id %}" class="login btn  btn-primary">rad etish</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+{% endblock %}

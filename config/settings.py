@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'shop.apps.ShopConfig',
     'cart.apps.CartConfig',
     'orders.apps.OrdersConfig',
+    'account.apps.AccountConfig',
     # Third party apps
 
 ]
@@ -60,7 +61,8 @@ ROOT_URLCONF = 'config.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [path_join(BASE_DIR, 'shop/templates'),
+        'DIRS': [path_join(BASE_DIR, 'templates'),
+                 path_join(BASE_DIR, 'shop/templates'),
                  path_join(BASE_DIR, 'cart/templates'),
                  path_join(BASE_DIR, 'orders/templates')],
         'APP_DIRS': True,
@@ -132,3 +134,11 @@ MEDIA_ROOT = path_join(BASE_DIR, 'media')
 
 CART_SESSION_ID = 'cart'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+AUTH_USER_MODEL = 'account.Student'
+LOGIN_REDIRECT_URL = 'product_list'
+
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'ozodbekjumanovbb@gmail.com'
+EMAIL_HOST_PASSWORD = 'zwdvaoryootvojmu'
+EMAIL_PORT = 465
+EMAIL_USE_SSL = True

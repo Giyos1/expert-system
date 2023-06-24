@@ -16,8 +16,6 @@ def cart_add(request, product_id):
         cart.add(product=product,
                  quantity=cd['quantity'],
                  update_quantity=cd['update'])
-        print(request.session.get('cart'))
-        # print(product)
     return redirect('cart:cart_detail')
 
 
@@ -37,6 +35,4 @@ def cart_detail(request):
         item['update_quantity_form'] = CartAddProductForm(initial={
             'quantity': item['quantity'],
             'override': True})
-        print(item.get('product'))
-    # print(cart.cart)
     return render(request, 'cart/detail.html', {'cart': cart})

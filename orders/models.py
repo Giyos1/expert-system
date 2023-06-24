@@ -33,6 +33,8 @@ class OrderItem(models.Model):
                                 decimal_places=2)
     quantity = models.PositiveIntegerField(default=1)
 
+    accepted = models.BooleanField(default=False)
+
     # The get_cost() method returns the total cost of an item.
     def get_cost(self):
         return self.price * self.quantity

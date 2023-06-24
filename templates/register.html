@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block title %}
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="offset-2 col-8">
+            <h1 class="text-center m-4">Register</h1>
+            <form method="POST" class="text-center d-flex flex-column align-items-center">
+                {% csrf_token %}
+                {{form.as_p}}
+                {#                <div class="form-group mb-3">#}
+                {#                    <label for="username">Username</label>#}
+                {#                    <input type="text" class="form-control" id="username" name="username" required>#}
+                {#                </div>#}
+                {#                <div class="form-group mb-3">#}
+                {#                    <label for="email">Email</label>#}
+                {#                    <input type="email" class="form-control" id="email" name="email" required>#}
+                {#                </div>#}
+                {#                <select name="subject" class="form-select mb-3" aria-label="Default select example">#}
+                {#                    <option selected>Open this select menu</option>#}
+                {#                    <option value="Fizika">Fizika</option>#}
+                {#                    <option value="Matematika">Matematika</option>#}
+                {#                    <option value="Ingliz tili">Ingliz tili</option>#}
+                {#                </select>#}
+                {#                <div class="form-group">#}
+                {#                    <label for="password1">Password</label>#}
+                {#                    <input type="password" class="form-control" id="password1" name="password1" required>#}
+                {#                </div>#}
+                {#                <div class="form-group">#}
+                {#                    <label for="password2">Confirm Password</label>#}
+                {#                    <input type="password" class="form-control" id="password2" name="password2" required>#}
+                {#                </div>#}
+
+                <button type="submit" class="btn btn-primary">Register</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}

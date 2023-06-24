@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <form method="post" enctype="multipart/form-data" class="text-center d-flex flex-column align-items-center">
+        {{ form.as_p }}
+        <p><input type="submit" value="Edit Product"></p>
+        {% csrf_token %}
+    </form>
+{% endblock %}

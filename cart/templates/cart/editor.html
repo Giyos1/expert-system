@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div style="height: 100vh; width: 100vw; display: flex; flex-direction: column; justify-content: center;">
+    <div id="editor" style="height: 50vh; width: 80vw; align-self: center"></div>
+    <div>
+        <button type="button" onclick="save()'
+">Save</button>
+    </div>
+</div>
+
+<link rel="stylesheet" href="https://unpkg.com/codemirror@5.65.13/lib/codemirror.css"/>
+<link rel="stylesheet" href="https://www.unpkg.com/codemirror@5.65.13/theme/solarized.css"/>
+<script src="https://unpkg.com/codemirror@5.65.13/lib/codemirror.js "></script>
+<script src="https://www.unpkg.com/codemirror@5.65.13/mode/python/python.js"></script>
+<script>
+    var editorDiv = document.getElementById('editor');
+    var myCodeMirror = CodeMirror(editorDiv, {
+        value: "def func():\n   return 100\n",
+        mode:  "python",
+        lineNumbers: true,
+        styleActiveLine: true,
+        matchBrackets: true,
+        theme: 'solarized dark',
+    });
+    function save() {
+        console.log(myCodeMirror.getValue());
+    }
+</script>
+</body>
+</html>

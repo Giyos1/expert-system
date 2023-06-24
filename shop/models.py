@@ -1,5 +1,6 @@
 from django.db import models
 from django.urls import reverse
+from account.models import ExportEmployee
 
 
 class Category(models.Model):
@@ -17,6 +18,10 @@ class Category(models.Model):
     def get_absolute_url(self):
         return reverse('shop:product_list_by_category', args=[self.slug])
 
+    def get_my_absolute_url(self):
+        print(reverse('shop:my_product_list_by_category', args=[self.slug]))
+        return reverse('shop:my_product_list_by_category', args=[self.slug])
+
 
 class Product(models.Model):
     category = models.ForeignKey(Category, related_name='products', on_delete=models.CASCADE)
@@ -29,6 +34,7 @@ class Product(models.Model):
     country = models.CharField(max_length=200)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
+    user = models.ForeignKey(ExportEmployee, related_name='products_user', on_delete=models.CASCADE)
 
     class Meta:
         ordering = ('name',)
@@ -40,4 +46,5 @@ class Product(models.Model):
     def get_absolute_url(self):
         return reverse('shop:product_detail', args=[self.id, self.slug])
 
-
+    def get_my_absolute_url(self):
+        return reverse('shop:my_product_detail', args=[self.id, self.slug])

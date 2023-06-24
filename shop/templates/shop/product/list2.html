@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% for product in object_list %}
+    {{ product }}
+    <div class="item">
+        <a href="{{ product.get_absolute_url }}">
+            <img src="
+                    {% if product.image %}{{ product.image.url }}{% else %}{% endif %}">
+        </a>
+        <a href="{{ product.get_absolute_url }}">{{ product.name }}</a>
+        <br>
+        ${{ product.price }}
+    </div>
+{% endfor %}
+</body>
+</html>

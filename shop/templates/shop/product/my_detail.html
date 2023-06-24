@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+    {{ product.name }}
+{% endblock %}
+{% block content %}
+    <div class="product-detail">
+        <img src="{% if product.image %}{{ product.image.url }}{% else %}
+{% static "img/no_image.png" %}{% endif %}">
+        <h1>{{ product.name }}</h1>
+        <h2>
+            <a href="{{ product.category.get_absolute_url }}">
+                {{ product.category }}
+            </a>
+        </h2>
+        <p class="price">${{ product.price }}</p>
+        {{ product.description|linebreaks }}
+        <a href="{% url 'shop:my_product_edit' product.id %}" class="btn btn-primary btn-lg">Edit</a>
+        <a href="{% url 'shop:my_product_delete' product.id %}" class="btn btn-primary btn-lg">Delete</a>
+        <a href="{% url 'shop:my_product_list' %}" class="btn btn-primary btn-lg">back</a>
+    </div>
+{% endblock %}
